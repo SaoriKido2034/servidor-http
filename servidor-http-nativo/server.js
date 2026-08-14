@@ -8,9 +8,11 @@ const server = http.createServer();
     const requisicao = (req, res) => {
    console.log('Requisição recebida! ${req.method} ${req.url}');
 
-res.statusCode = 200
-res.setHeader('Content-Type', 'application/json');
-res.end(JSON.stringify({"Kuhr":"Kuhrff"}));
+res.statusCode = 201
+res.setHeader('Content-Type', 'text/plain charse= utf-8');
+//'application/json'
+res.end("Recurso Criado");
+//JSON.stringify({"Mensagem":"Valor"})
 }
 
 server.on('request', requisicao);
