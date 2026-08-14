@@ -1,17 +1,20 @@
-const http = require('node:http')
+import http from 'node:http'
 
 const porta = 3000
 
 const server = http.createServer();
 
-server.on('request', (req, res) => {
-   console.log('Servidor funcionando! ${req.method} ${req.url}');
+
+    const requisicao = (req, res) => {
+   console.log('Requisição recebida! ${req.method} ${req.url}');
 
 res.statusCode = 200
-res.setHeader('Content-Type', 'text/plain; cherset=utf-8');
-res.end("Servidor Funcionando!");
-});
+res.setHeader('Content-Type', 'application/json');
+res.end(JSON.stringify({"Kuhr":"Kuhrff"}));
+}
 
-server.listen(porta, ()=> {
+server.on('request', requisicao);
+
+server.listen(porta, () => {
     console.log('Servidor ouvindo na porta ${porta}')
 });
